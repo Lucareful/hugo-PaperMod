@@ -1,5 +1,14 @@
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    var sentence = document.querySelector(".poem_sentence")
+    var info = document.querySelector(".poem_info")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '—— ' + result.data.origin.author
+  });
+</script>
     {{- if not site.Params.footer.hideCopyright }}
         <span>
             <a id="running-time"></a>
@@ -27,7 +36,9 @@
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a> 📖
+        <text class="poem_sentence"></text>
+        <text class="poem_info"></text>
     </span>
 </footer>
 {{- end }}
